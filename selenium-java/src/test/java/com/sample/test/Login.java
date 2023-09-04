@@ -1,7 +1,9 @@
 package com.sample.test;
 
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
+
+import com.sample.page.search;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -40,10 +42,10 @@ public class Login {
 		cap.setPlatform(Platform.MAC);
 		driver = new RemoteWebDriver(new URL("http://localhost:4444"),cap);
 		driver.get(prop.getProperty("URL"));
-
+		search objSearch = new search(driver);
+		objSearch.googleSearch("test more...");
 	}
 
-	@AfterMethod
 	@AfterTest
 	public void tearDown() {
 		if (driver != null) {
