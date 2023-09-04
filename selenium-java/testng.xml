@@ -5,7 +5,5 @@
 		<classes>
 			<class name="com.sample.test.Login" />
 		</classes>
-	</test> <!--
-	BasicTest -->
-</suite> <!--
-TestSuite -->
+	</test> 
+</suite> 

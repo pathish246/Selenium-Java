@@ -5,9 +5,13 @@ import org.testng.annotations.Test;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Properties;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -30,8 +34,11 @@ public class Login {
 	}
 
 	@Test
-	public void launch() {
-		driver = new ChromeDriver();
+	public void launch() throws MalformedURLException {
+		DesiredCapabilities cap = new DesiredCapabilities();
+		cap.setBrowserName("chrome");
+		cap.setPlatform(Platform.MAC);
+		driver = new RemoteWebDriver(new URL("http://localhost:4444"),cap);
 		driver.get(prop.getProperty("URL"));
 
 	}
